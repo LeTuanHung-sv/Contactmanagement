@@ -44,7 +44,7 @@ public class ContactService {
 
     public List<Contact> getAllSorted() {
         return contacts.stream()
-                .sorted(Comparator.comparing(Contact::getName))
+                .sorted(Comparator.comparing(Contact::getId))
                 .collect(Collectors.toList());
     }
 
@@ -70,9 +70,43 @@ public class ContactService {
         }
     }
 
-    public List<Contact> getFavorites() {
-        return contacts.stream()
-                .filter(Contact::isFavorite)
-                .collect(Collectors.toList());
+    public boolean existsById(String id) {
+        for (Contact c : getAll()) {
+            if (c.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+//    public List<Contact> getFavorites() {
+//        return contacts.stream()
+//                .filter(Contact::isFavorite)
+//                .collect(Collectors.toList());
+//    }
+
+    public void displayContacts(List<Contact> contacts){
+        if (contacts == null || contacts.isEmpty()) {
+            System.out.println("Danh bạ trống!");
+            return;
+        }
+
+        System.out.println("====================================================================================================================");
+        System.out.printf("| %-4s | %-20s | %-15s | %-25s | %-25s | %-10s |%n",
+                "ID", "Họ và tên", "SĐT", "Email", "Address", "Yêu thích");
+        System.out.println("====================================================================================================================");
+
+        for (Contact c : contacts) {
+            System.out.printf("| %-4s | %-20s | %-15s | %-25s | %-25s | %-10s |%n",
+                    c.getId(),
+                    c.getName(),
+                    c.getPhone(),
+                    c.getEmail(),
+                    c.getAddress(),
+                    c.isFavorite() ? "(*) Có" : "Không"); System.out.println("====================================================================================================================");
+        }
+
+        System.out.println("====================================================================================================================");
     }
 }

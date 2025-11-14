@@ -1,1 +1,34 @@
-[{"id":"1","name":"le tuan hung","phone":"1231231232","email":"127983@gmail.com","address":"12345Ahong lac","favorite":false},{"id":"1","name":"anh","phone":"2421","email":"5452","address":"123","favorite":false},{"id":"3","name":"binh","phone":"45743","email":"2838y432","address":"23o0i","favorite":false},{"id":"5","name":"c","phone":"12983","email":"sdjf","address":"48u","favorite":false}]
+[
+  {
+    "id": "1",
+    "name": "Hung",
+    "phone": "0363135051",
+    "email": "letuanhung406@gmail.com",
+    "address": "145/3 duong tu giang",
+    "favorite": false
+  },
+  {
+    "id": "2",
+    "name": "Thien",
+    "phone": "0967360047",
+    "email": "letanthien123@gmail.com",
+    "address": "145/5 cao lo",
+    "favorite": false
+  },
+  {
+    "id": "3",
+    "name": "duy",
+    "phone": "0974581067",
+    "email": "tranhoangduy123@gmail.com",
+    "address": "339/3b to hien thanh",
+    "favorite": false
+  },
+  {
+    "id": "4",
+    "name": "Le Tuan Da vit",
+    "phone": "0123456789",
+    "email": "Davit123@gmail..com",
+    "address": "123 nguyen thi thap",
+    "favorite": false
+  }
+]

@@ -1,6 +1,7 @@
 package service;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.Contact;
 import model.Group;
@@ -10,13 +11,13 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class FileService {
-    private final Gson gson = new Gson();
+    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public void saveContacts(List<Contact> contacts) throws IOException{
         File file = new File("data/contacts.json");
         file.getParentFile().mkdirs();
 
-        try (Writer writer = new FileWriter("data/contacts.json")){
+        try (Writer writer = new FileWriter(file)){
             gson.toJson(contacts, writer);
         }
     }
@@ -42,8 +43,7 @@ public class FileService {
         if (!file.exists()) return new java.util.ArrayList<>();
 
         try (Reader reader = new FileReader(file)) {
-            Type listType = new TypeToken<List<Group>>() {
-            }.getType();
+            Type listType = new TypeToken<List<Group>>(){}.getType();
             return gson.fromJson(reader, listType);
         }
     }

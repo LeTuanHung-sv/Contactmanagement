@@ -4,11 +4,14 @@ import service.ContactService;
 import service.FavoriteService;
 import service.FileService;
 import service.GroupService;
+import ui.ScreenUtil;
 
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+import static ui.ScreenUtil.clearScreen;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
@@ -47,6 +50,12 @@ public class Main {
                     System.out.print("Nhập ID: ");
                     String id = scanner.nextLine();
 
+                    if(contactService.existsById(id))
+                    {
+                        System.out.println("Id đã tồn tại! vui lòng nhập Id khác.\n");
+                        break;
+                    }
+
                     System.out.print("Nhập tên: ");
                     String name = scanner.nextLine();
 
@@ -60,6 +69,7 @@ public class Main {
                     String address = scanner.nextLine();
 
                     Contact c = new Contact(id, name, phone, email, address, true);
+
                     contactService.addContact(c);
                     fileService.saveContacts(contactService.getAll());
                     System.out.println("Đã thêm liên hệ thành công!\n");
@@ -125,7 +135,17 @@ public class Main {
                     if (found.isEmpty()) {
                         System.out.println("Không tìm thấy liên hệ nào!");
                     }else {
-                        found.forEach(c -> System.out.println(c.getName() + " - " + c.getPhone()));
+                        System.out.printf("%-10s %-20s %-15s %-25s %-30s%n",
+                                "ID", "Tên", "Số ĐT", "Email", "Địa chỉ");
+                        System.out.println("-----------------------------------------------------------------------------------------------");
+
+                        found.forEach(c -> System.out.printf("%-10s %-20s %-15s %-25s %-30s%n",
+                                c.getId(),
+                                c.getName(),
+                                c.getPhone(),
+                                c.getEmail(),
+                                c.getAddress()
+                        ));
                         System.out.println();
                     }
                 }
@@ -133,7 +153,7 @@ public class Main {
                 case 5 -> {
                     List<Contact> all = contactService.getAllSorted();
                     if (all.isEmpty()) System.out.println("Danh bạ trống.\n");
-                    else all.forEach(c -> System.out.println(c.getName() + " - " + c.getPhone()));
+                    else contactService.displayContacts(contactService.getAllSorted());
                     System.out.println();
                 }
 
@@ -154,10 +174,16 @@ public class Main {
                 }
 
                 case 8 -> {
-                    List<Contact> favs = contactService.getFavorites();
-                    if (favs.isEmpty()) System.out.println("Không có liên hệ yêu thích nào.\n");
-                    else favs.forEach(System.out::println);
-                    System.out.println();
+                    System.out.println("===== DANH BẠ YÊU THÍCH =====");
+                    List<Contact> favorites = contacts.stream()
+                            .filter(Contact::isFavorite)
+                            .toList();
+
+                    if (favorites.isEmpty()) {
+                        System.out.println("Không có liên hệ yêu thích nào.");
+                    } else {
+                        contactService.displayContacts(favorites);
+                    }
                 }
 
                 case 9 -> {
@@ -194,7 +220,7 @@ public class Main {
 
                 case 12 -> {
                     System.out.print("Nhập tên nhóm: ");
-                    String groupName = scanner.nextLine();
+                    String groupName = scanner.nextLine().trim();
                     Group g = groupService.findGroup(groupName);
 
                     if (g == null) {
