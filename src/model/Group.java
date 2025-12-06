@@ -20,6 +20,10 @@ public class Group {
         return groupName;
     }
 
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
     public List<String> getContactId() {
         return contactId;
     }
@@ -28,8 +32,8 @@ public class Group {
         if (!contactId.contains(id)) contactId.add(id);
     }
 
-    public void removeContact(String id) {
-        contactId.remove(id);
+    public boolean removeContact(String id) {
+        return contactId.remove(id);
     }
 
 }

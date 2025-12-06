@@ -7,7 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupService {
-    private final List<Group> groups = new ArrayList<>();
+    private final List<Group> groups;
+
+    public GroupService() {
+        try {
+            FileService fileService = new FileService();
+            groups = fileService.loadGroups();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void addGroup(Group g){
         groups.add(g);
@@ -22,17 +31,17 @@ public class GroupService {
         }
     }
 
-    public void removeContactFromGroup(String groupName,String contactId){
+    public boolean removeContactFromGroup(String groupName,String contactId){
         for(Group g : groups){
             if(g.getGroupName().equalsIgnoreCase(groupName)){
-                g.removeContact(contactId);
-                return;
+                return g.removeContact(contactId);
             }
         }
+        return false;
     }
     public Group findGroup(String groupName) {
         for (Group g : groups) {
-            if (g.getGroupName().equalsIgnoreCase(groupName))
+            if (g.getGroupName().trim().equalsIgnoreCase(groupName.trim()))
                 return g;
         }
         return null;

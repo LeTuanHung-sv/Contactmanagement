@@ -1,27 +1,27 @@
 [
   {
     "id": "1",
-    "name": "Hung",
+    "name": "Le Tuan Hung",
     "phone": "0363135051",
     "email": "letuanhung406@gmail.com",
     "address": "145/3 duong tu giang",
-    "favorite": false
+    "favorite": true
   },
   {
     "id": "2",
-    "name": "Thien",
+    "name": "Le Tan Thien",
     "phone": "0967360047",
     "email": "letanthien123@gmail.com",
     "address": "145/5 cao lo",
-    "favorite": false
+    "favorite": true
   },
   {
     "id": "3",
-    "name": "duy",
+    "name": "Tran Hoang Duy",
     "phone": "0974581067",
     "email": "tranhoangduy123@gmail.com",
     "address": "339/3b to hien thanh",
-    "favorite": false
+    "favorite": true
   },
   {
     "id": "4",
@@ -29,6 +29,38 @@
     "phone": "0123456789",
     "email": "Davit123@gmail..com",
     "address": "123 nguyen thi thap",
+    "favorite": false
+  },
+  {
+    "id": "5",
+    "name": "Nguyen Dang Toai",
+    "phone": "1234567890",
+    "email": "DangToai456@gmail.com",
+    "address": "Tan my",
+    "favorite": true
+  },
+  {
+    "id": "6",
+    "name": "Le Tuan Trieu",
+    "phone": "1234561234",
+    "email": "trieuLe125@gmail.com",
+    "address": "123 le van viet",
+    "favorite": false
+  },
+  {
+    "id": "7",
+    "name": "Tran van tai",
+    "phone": "1234567891",
+    "email": "tranvantai321@gmail.com",
+    "address": "123A",
+    "favorite": false
+  },
+  {
+    "id": "9",
+    "name": "Tran van A",
+    "phone": "0987654321",
+    "email": "tranvana@gmail.com",
+    "address": "134 ba trieu",
     "favorite": false
   }
 ]

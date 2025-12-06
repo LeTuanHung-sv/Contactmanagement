@@ -30,12 +30,6 @@ public class ContactService {
         return contacts.removeIf(c -> c.getId().equals(id));
     }
 
-    public List<Contact> searchByName(String name){
-        return contacts.stream()
-                .filter(c -> c.getName().toLowerCase().contains(name.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-
     public List<Contact> searchByPhone(String phone){
         return contacts.stream()
                 .filter(c -> c.getPhone().contains(phone))
@@ -77,6 +71,15 @@ public class ContactService {
             }
         }
         return false;
+    }
+
+    public Contact findContactById(String id) {
+        for (Contact c : getAll()) {
+            if (c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
     }
 
 

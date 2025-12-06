@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "groupName": "friend",
+    "contactId": [
+      "1",
+      "2"
+    ]
+  },
+  {
+    "groupName": "family",
+    "contactId": [
+      "3",
+      "4"
+    ]
+  },
+  {
+    "groupName": "job",
+    "contactId": [
+      "5",
+      "6",
+      "7"
+    ]
+  }
+]
