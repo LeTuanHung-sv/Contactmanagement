@@ -62,6 +62,7 @@ public class Main {
                             break;
                         }
                     }
+                    if(id == null) break;
 
 
                     String name;
